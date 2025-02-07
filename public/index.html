@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal Linux Clone - Ferramentas</title>
+    
+    <!-- Camadas do Título -->
+    <div class="container">
+        <h1 style="margin-bottom: 20px;">Terminal Linux Clone</h1>
+        
+        <!-- Menu de navegação -->
+        <nav style="border-bottom: 2px solid #374151; padding: 10px;">
+            <ul style="list-style-type: none; padding-left: 20px;">
+                <li><a href="/login/google" style="color: white;">Entrar com Google</a></li>
+                <li><a href="/tools/public" style="color: white;">Ferramentas Públicas</a></li>
+                <li><a href="/tools/private" style="color: white;">Ferramentas Privadas</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <style>
+        /* CSS do Terminal */
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        h1 {
+            color: #374151;
+            font-family: 'Courier New', monospace;
+            font-size: 2em;
+            margin-bottom: 40px;
+        }
+
+        .terminal-toolbar {
+            border-bottom: 2px solid #374151;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .terminal-toolbar button {
+            padding: 8px 15px;
+            background-color: #f8f9fa;
+            border: none;
+            color: #374151;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        .terminal-toolbar button:hover {
+            background-color: #e9ecef;
+        }
+
+        /* Login de Google */
+        .google-auth .login-form {
+            margin-top: 40px;
+        }
+
+        .google-auth input.g/tutorial-text-field {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #dfe6e9;
+            border-radius: 4px;
+        }
+
+        .google-auth textarea.g/tutorial-text-field {
+            padding: 12px;
+            font-size: 15px;
+            margin-bottom: 8px;
+            border: 2px solid #dfe6e9;
+            border-radius: 4px;
+        }
+
+        .google-auth .google-advisor-button {
+            display: inline-block;
+            background-color: #f8f9fa;
+            padding: 7px 15px;
+            color: #374151;
+            text-decoration: none;
+            border: 2px solid #dfe6e9;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        .google-auth .google-advisor-button:hover {
+            background-color: #e9ecef;
+        }
+    </style>
+</head>
+<body>
+    <h1>Terminal Linux Clone - Ferramentas</h1>
+
+    <!-- Login de Google -->
+    <div class="terminal-toolbar">
+        <a href="/login/google" style="color: white;">Entrar com Google</a>
+    </div>
+
+    <!-- Ferramentas Públicas -->
+    <div id="publicTools" class="container">
+        <h2>Ferramentas Públicas</h2>
+        
+        <!-- Aqui você pode adicionar suas ferramentas públicas -->
+        <div id=" ferramental 1" style="margin-bottom: 30px;">
+            <h3>Ferramental 1</h3>
+            <p>Descrição da ferramental 1.</p>
+        </div>
+        
+        <!-- Ferramenta 2 -->
+        <div id=" ferramental 2" style="margin-bottom: 30px;">
+            <h3>Ferramental 2</h3>
+            <p>Descrição da ferramental 2.</p>
+        </div>
+    </div>
+
+    <!-- Ferramentas Privadas -->
+    <div id="privateTools" class="container">
+        <h2>Ferramentas Privadas</h2>
+        
+        <!-- Aqui você pode adicionar suas ferramentas privadas -->
+        <div id=" ferramental 3" style="margin-bottom: 30px;">
+            <h3>Ferramental 3</h3>
+            <p>Descrição da ferramental 3.</p>
+        </div>
+        
+        <!-- Ferramenta 4 -->
+        <div id=" ferramental 4" style="margin-bottom: 30px;">
+            <h3>Ferramental 4</h3>
+            <p>Descrição da ferramental 4.</p>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
+    
+    <script>
+        const provider = new firebase.auth.GoogleAuthProvider();
+        
+        function loginGoogle() {
+            auth.signInWithPopup(provider)
+                .then((result) => {
+                    console.log("Usuário logado:", result.user);
+                })
+                .catch((error) => {
+                    console.error("Erro no login:", error);
+                });
+        }
+        
+        // Exemplo de botão para o Login por Google
+        document.querySelector('/login/google').addEventListener('click', loginGoogle);
+
+        // Verificação para Login por Google
+        const functionHandler = (request, response) => {
+            if (request.path === '/login/google') {
+                try {
+                    const [email] = request.body;
+                    await invokeFunction('validarLoginPorGoogle', { e-mail: email });
+                    response.json({ ok: true });
+                } catch (error) {
+                    console.error('Erro na verificação de login por Google:', error);
+                    response.status(500).json({ ok: false, message: 'Credito inválido' });
+                }
+            } else {
+                const result = await signInWithPopup(provider).then((result) => {
+                    if (result.user) {
+                        response.json({ ok: true });
+                    } else {
+                        response.status(401).json({ ok: false, message: 'olithed' });
+                    }
+                });
+            }
+        };
+
+        window.onload = function() {
+            const func = require('firebase-functions');
+            const functionHandler = (request, response) => {
+                // Implementação da verificação de login por Google
+            };
+            
+            const cf = require('firebase-functions');
+            const functionHandler = async (request, response) => {
+                try {
+                    if (request.path === '/login/google') {
+                        const [email] = request.body;
+                        await invokeFunction('validarLoginPorGoogle', { e-mail: email });
+                        response.json({ ok: true });
+                    } else {
+                        // Chamamento normal
+                        const result = await signInWithPopup(provider).then((result) => {
+                            if (result.user) {
+                                response.json({ ok: true });
+                            } else {
+                                response.status(401).json({ ok: false, message: 'olithed' });
+                            }
+                        });
+                    }
+                } catch (error) {
+                    console.error('Erro na funcão:', error);
+                    response.status(500).json({ ok: false, message: error.message });
+                }
+            };
+
+            // Inicialização da API de Firebase
+            await cf.register(functionHandler, '/login').then((res) => {
+                if (res.status !== 200) throw new Error('Erro na definição da API');
+            });
+
+            window.location.href = '/login';
+        };
+        
+        // Adicione aqui a URL para o login
+        window.location.href = '/login';
+    </script>
+</body>
+</html>
